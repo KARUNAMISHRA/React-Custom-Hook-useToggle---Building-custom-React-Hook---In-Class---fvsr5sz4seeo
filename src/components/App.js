@@ -1,16 +1,21 @@
-import React,{useCallback,useState} from 'react'
-import '../styles/App.css';
-import useToggle from './useToggle.js'
+ import React from "react";
+import "../styles/App.css";
+import useInput from "./useInput";
+import SignInForm from "./SignInForm";
 const App = () => {
+  //complete the useInput hook
+  const email = useInput("");
+  const password = useInput("");
 
-  
 
-    const [isTextChanged, setIsTextChanged] = useToggle();
-
-  return(
-        <button id='button' onClick={setIsTextChanged}>{isTextChanged ? 'Toggled' : 'Click to Toggle'}</button>
-    );
-}
-
+  return (
+    <div id="main">
+      <SignInForm email={email} password={password} />
+      <h1>Result</h1>
+      <h2 id="email">Email is: {email.value}</h2>
+      <h2 id="password" >Password is: {password.value}</h2>
+    </div>
+  );
+};
 
 export default App;
