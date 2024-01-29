@@ -1,14 +1,11 @@
- import { useEffect } from "react";
-import { useState } from "react";
+import React,{useCallback,useState} from 'react'
 
-const useLocalStorage = (stateVar, value) => {
-  const[curState,setState] = useState(value);
-  updateStorage(stateVar,curState);
-  return [curState,setState];
-};
+const useToggle = (initialState=false) => {
+   const[state,setState]=useState(initialState);
 
-const updateStorage =(key,val)=>{
-    localStorage.setItem(key,val);
-}
-
-export default useLocalStorage;
+   const toggleValue = ()=>{
+      setState((prev)=>!prev);
+      };
+   return[state,toggleValue];
+  };
+  export default useToggle;
